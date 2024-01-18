@@ -9,4 +9,4 @@ docker_image:
 pyqt:
 - '5.15'
 vtk:
-- 9.2.5
+- 9.2.6

@@ -1,5 +1,5 @@
 {% set name = "dtumathtools" %}
-{% set version = "1.1.0" %}
+{% set version = "2024.1.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: f9fe7e34dc5be3954f451ea639c3ab47ba31c0b2b620f5e29618f1640bce1782
+  sha256: 9ad4b6068400d37503956ade3ecdbb264c4a0302e8a5795e62ebee8ad7a93bdb
 
 build:
   noarch: python

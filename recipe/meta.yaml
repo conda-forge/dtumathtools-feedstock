@@ -1,5 +1,5 @@
 {% set name = "dtumathtools" %}
-{% set version = "2024.1.0" %}
+{% set version = "2024.1.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 9ad4b6068400d37503956ade3ecdbb264c4a0302e8a5795e62ebee8ad7a93bdb
+  sha256: a01e225e05e08b34cf25b3e03e84e58c0634f2fa81f767a8ae5c6cf615565a5b
 
 build:
   noarch: python
@@ -16,16 +16,16 @@ build:
 
 requirements:
   host:
-    - python >=3.7,<3.13
+    - python >=3.8,<3.13
     - pip
     - setuptools_scm
     - pyproject-metadata
   run:
-    - python >=3.7,<3.13
+    - python >=3.8,<3.13
     - sympy ~=1.12
     - matplotlib ==3.6.*
     - jupyter >=1.0.0
-    - numpy >=1.24
+    - numpy >=1.24,<2
     - sympy_plot_backends >=2.4,<3
 
   run_constrained:

@@ -6,22 +6,22 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: a54345d962d78cfd50695c2a519fcb9bdeba533f55606bb570ca9f2c3203069b
 
 build:
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv
-  number: 0
+  number: 1
 
 requirements:
   host:
-    - python >=3.9,<3.13
+    - python {{ python_min }}
     - pip
     - setuptools_scm >=6.2
     - pyproject-metadata
   run:
-    - python >=3.9,<3.13
+    - python >={{ python_min }},<3.13
     - sympy ~=1.12
     - matplotlib >=3.8,<3.10
     - jupyter >=1.0.0
@@ -69,6 +69,7 @@ test:
     - ipyevents
     # currently we need 4.8.2 to be released... so it won't work... :(
     #- mayavi
+    - python {{ python_min }}
   source_files:
     - tests
   commands:

@@ -32,7 +32,6 @@ requirements:
   run_constrained:
     # define optional dependencies and how they should be
     # versioned.
-    # k3d
     - vtk
     - k3d >=2.9.7
 
@@ -56,12 +55,9 @@ test:
   imports:
     - dtumathtools
   requires:
-    - pip
     - pytest
     - vtk
     - k3d
-    # k3d has a weak dependency on deepcompararer
-    - deepcomparer
     - ipympl
     - plotly
     - panel
@@ -71,6 +67,10 @@ test:
     - ipyevents
     # currently we need 4.8.2 to be released... so it won't work... :(
     #- mayavi
+    - pip
+    - pip:
+        # k3d has a weak dependency on deepcompararer
+        - deepcomparer
   source_files:
     - tests
   commands:

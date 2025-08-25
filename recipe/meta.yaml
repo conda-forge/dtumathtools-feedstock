@@ -68,7 +68,6 @@ test:
     # currently we need 4.8.2 to be released... so it won't work... :(
     #- mayavi
     - pip
-    # k3d has a weak dependency on deepcomparer
     - pip:
         - deepcomparer
   source_files:

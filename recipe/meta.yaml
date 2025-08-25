@@ -1,27 +1,27 @@
 {% set name = "dtumathtools" %}
-{% set version = "2024.2.0" %}
+{% set version = "2025.2.0" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: a54345d962d78cfd50695c2a519fcb9bdeba533f55606bb570ca9f2c3203069b
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: 4f6d66d1578b44b9bf20da276cb8b05dc09cc04ebb6c0669eee0e8837f207fd7
 
 build:
-  noarch: python
   script: {{ PYTHON }} -m pip install . -vv
   number: 0
+  skip: true  # [py<39 or py>312]
 
 requirements:
   host:
-    - python >=3.9,<3.13
+    - python
     - pip
     - setuptools_scm >=6.2
     - pyproject-metadata
   run:
-    - python >=3.9,<3.13
+    - python
     - sympy ~=1.12
     - matplotlib >=3.8,<3.10
     - jupyter >=1.0.0
@@ -32,22 +32,16 @@ requirements:
   run_constrained:
     # define optional dependencies and how they should be
     # versioned.
-    # k3d
     - vtk
     - k3d >=2.9.7
-
     - ipympl >=0.7.0
-
     - plotly >=4.14.3
-
     # bokeh
     - panel >=1.0.0
     - ipywidgets_bokeh
     - colorcet
-
     # QT
     - pyqt ~=5.15.9
-
     # myavi (also depends on vtk)
     - ipyevents
     - mayavi ~=4.8,>=4.8.2
@@ -67,11 +61,12 @@ test:
     - colorcet
     - pyqt
     - ipyevents
-    # currently we need 4.8.2 to be released... so it won't work... :(
-    #- mayavi
+    # currently we need 4.8.2 to be released... so it won't work...
+    # mayavi
   source_files:
     - tests
   commands:
+    - pip install deepcomparer
     - pip check
     # we won't test the plots (for now)
     # The problem is that they require mayavi which is not installed here.. :(
@@ -80,8 +75,8 @@ test:
 
 about:
   home: https://github.com/dtudk/dtumathtools
-  summary: 'A plotting package for the Mathematics 1 course at the Technical University of Denmark'
-  description: 'A plotting package for the Mathematics 1 course at the Technical University of Denmark'
+  summary: 'A plotting package for the Mathematics 1a/1b course at the Technical University of Denmark'
+  description: 'A plotting package for the Mathematics 1a/1b course at the Technical University of Denmark'
   license: BSD-3-Clause
   license_family: BSD
   license_file: LICENSE

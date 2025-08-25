@@ -69,7 +69,7 @@ test:
     #- mayavi
     - pip
     - pip:
-        # k3d has a weak dependency on deepcompararer
+        # k3d has a weak dependency on deepcomparer
         - deepcomparer
   source_files:
     - tests

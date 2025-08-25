@@ -60,7 +60,8 @@ test:
     - pytest
     - vtk
     - k3d
-    - deepcomparer # k3d requires this
+    # k3d has a weak dependency on deepcompararer
+    - deepcomparer
     - ipympl
     - plotly
     - panel

@@ -3,6 +3,8 @@ schema_version: 1
 context:
   name: dtumathtools
   version: "2025.2.0"
+  python_min: "3.9"
+  python_max: "3.12"
 
 package:
   name: ${{ name|lower }}
@@ -13,18 +15,18 @@ source:
   sha256: 4f6d66d1578b44b9bf20da276cb8b05dc09cc04ebb6c0669eee0e8837f207fd7
 
 build:
-  number: 2
-  skip: match(python, "<3.9") or match(python, ">3.12")
+  noarch: python
   script: ${{ PYTHON }} -m pip install . -vv
+  number: 3
 
 requirements:
   host:
-    - python
+    - python ${{ python_min }}.*
     - pip
     - setuptools_scm >=6.2
     - pyproject-metadata
   run:
-    - python
+    - python >=${{ python_min }},<=${{ python_max }}
     - sympy ~=1.12
     - matplotlib >=3.8,<3.10
     - jupyter >=1.0.0

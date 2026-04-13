@@ -48,7 +48,9 @@ requirements:
 
 tests:
   - python:
-      python_version: '3.12'
+      python_version:
+        - "${{ python_min }}"
+        - "${{ python_max }}"
       imports:
         - dtumathtools
       pip_check: true
@@ -58,7 +60,6 @@ tests:
         # against a newer python version (than the 3.9).
         # Hence we test on a more recent python version.
         # It is not ideal, but good enough.
-        - python >3.9
         - pip
         - pytest
         - vtk

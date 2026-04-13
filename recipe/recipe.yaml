@@ -69,11 +69,11 @@ tests:
         - colorcet
         - pyqt
         - ipyevents
-        - deepcomparer
     files:
       source:
         - tests
     script:
+      - pip install deepcomparer
       - pytest tests -k "not test_boundary and not test_quiver and not test_scatterplot"
 
 about:
